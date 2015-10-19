@@ -1,0 +1,400 @@
+* meta data
+There's a few things in this file for trying to figure out the total curriculum of the course:
+  1. there's the /ideal/ curriculum
+     * every topic you'd want to cover
+     * assuming more or less unlimited time
+  2. there's the /constrained/ curriculum
+     * very limited schedule (12 * 2 * 3 = 72 hours roughly)
+       * evening class
+     * less limited intro (20 lectures per term * 3 terms * 1.5 = 90 hours roughly)
+       * intro to CS course sequence at university
+     * least limited schedule (8 * 5 * 4 = 160 hours roughly)
+       * immersion course, half of the time is assumed lecture and half practice
+
+How can we handle all of this? I'd argue that something akin to having "optional sections" or advanced sections. So for the purposes of figuring out what to do we could have something akin to :core:, :advanced:, and :optional: as tags. The :core: topics are going to be the things that are absolutely necessary to have a comprehensive notion of how to write useful things in javascript, :advanced: will be things more suitable to a longer course than just the evening course, and :optional: will be things mostly suited to filling gaps in the immersion course.
+
+I'm also going to include suggestions for exercises as I think of them.
+
+To be clear, this isn't my proclamation of the Curriculum to Rule Them All but rather me figuring out a rough plan for what topics go in what classes as raw materials for future discussions and revisions. The point of the "optional" topics is to figure out "ideal" things that we can point students to 
+
+* Giant Curriculum Outline of Doom
+** Fundamentals of Programming
+*** What Is Programming?					       :core:
+**** Formal Languages
+     1. Cooking
+     2. Driving
+     3. Instructions for performing computations
+     4. Knitting and crocheting
+**** Syntax vs. Semantics
+     1. Syntax is the text of a literal program
+     2. Semantics is what it means to the computer
+     3. Every programming language has syntax and semantics
+     4. Every piece of syntax has its meaning
+     5. Most languages have similar semantics but different syntax
+     6. Semantics can be evaluated by hand
+     7. All languages make tradeoffs
+	1. Lower level languages
+	   1. Closer to assembly
+	   2. Easier to implement
+	   3. Easier to understand *what* the computer is doing
+	2. Higher level languages
+	   1. More abstract
+	   2. Harder to implement
+	   3. Easier to understand what *you're* doing      
+**** Computation As an Object of Study
+     1. Computation exist independently of computers
+     2. Computation is something that can be studied in and of itself
+     3. Computation has fundamental limits
+	1. You're unlikely to hit them unless you're very ambitious
+*** Programming Constructs					       :core:
+**** Instructions in General
+***** Instructions have specialized languages
+****** Broil, sautee, roast, dice, julienne
+****** Knit, pearl, drop stitch, granny squares
+**** Nouns and Verbs for Programming
+***** Nouns Are Data
+      "Data" means all the things that you manipulate in a program. There are many different kinds of data in any programming language and, generally, facilities for you to define your own kinds of data.
+***** Verbs Are Operations
+      Any programming language has syntax that is for manipulating the data. Some "verbs" are general, such as the ability to repeat an action. Some verbs are specific to kinds of data, the same way that knit and pearl only make sense with knitting and not, say, with baking.
+**** Basic data
+***** Preliminary: IO
+****** console.log prints things out
+****** Used for debugging and for demonstrating code that doesn't have a graphical interface
+****** We'll also use this as a base operation in JavaScript for bootstrapping our examples
+***** Numbers
+****** As nouns
+******* Integers
+******* Floating point numbers
+******* NaN
+******* Infinity
+****** Verbs for numbers
+******* Arithmetic operations
+******** multiplication
+******** addition
+******** division
+***** Variables
+****** Variables as pronouns
+       A variable fundamentally functions as a pronoun, a way to reference something else. Much like a pronoun, variables in a programming language /point/ to another thing and what they point to can change throughout the text. For example, in the sentence 
+#+BEGIN_QUOTE
+He handed him his present that he had asked him to get for his birthday.
+#+END_QUOTE
+Now, that's not the most clear English sentence but you can tell that there's multiple people being referred to by "he", "him", and "his". The sentence needs at least two separate people to make sense.
+
+Similarly, variables can point to different things over the life of a program but this can be just as confusing as the above sentence if you're not careful.
+****** Variables as storage
+       The function of variables in a programming language is to refer to a location in /memory/ that can be modified and accessed. The memory location is like a folder in a drawer or a trapper keeper: it can contain things and you can put stuff in it and take stuff out.
+****** Creating variables
+****** Accessing variables
+***** undefined
+***** Strings
+****** As nouns
+******* Strings Are Text
+******* Text as Communication
+******* Two Different Syntaxes
+****** Verbs for Strings
+******* Concatenation
+******* Slicing
+******* Accessing characters in a string
+***** Booleans
+****** As nouns
+******* True and False
+       	There are only two values of Booleans: ~true~ and ~false~, representing the idea that 
+******* Useful for making decisions
+******* Truthyness and Falsyness
+****** Verbs for Booleans
+******* Boolean operators
+******** Short-circuiting
+******** And
+******** Or
+******** Not
+******* Booleans (and boolean like things) are for making decisions
+******* If statements
+******** Choosing between two paths
+******** Syntax
+******** Semantics
+******** If-as-expression: the ternary operator
+******* While loops
+******** Repeating things 
+***** Functions
+****** As nouns
+******* Functions as instructions
+******* Functions as functions from math class
+****** Verbs for functions
+******* Creating functions
+******** Function scope
+******** return
+******* Anonymous vs. named functions
+******* Applying functions
+***** Arrays
+****** As nouns
+******* Lists of things
+******* Collections of things
+******* Ordered collections
+****** Verbs for arrays
+***** Objects
+****** As nouns
+******* Collections without order
+******* Collections with labels
+******* Coallating data together by function
+******* Tiny machines
+****** Verbs for objects
+******* Accessing properties with dot notation 
+******* Acessing properties with 
+******* this and self-reference
+**** Advanced notions
+***** Iteration
+****** General for loops
+****** For-in loops
+****** .forEach methods
+****** Loop invariants						   :optional:
+***** Closures
+****** Inner and outer functions
+******* Inner functions "close over" the variables defined in the outer function
+******* Closed-over variables don't disappear
+******** Counters
+******** Parsers
+******** Memoization
+****** Factories
+****** "Iffe"s
+** Advanced Programming
+*** Testing							      
+**** Why Test?							       :core:
+***** Any large program is hard to understand
+***** Testing gives confidence
+***** Testing allows refactoring				      
+**** Unit Tests							       :core:
+***** Test small individual pieces of functionality
+****** Need to know what breaks and when
+****** When a test fails it should be obvious where it went wrong
+***** Unit testing doesn't ensure correctness
+****** Need to know your tests cover a lot of possibilities	       :core:
+**** Fuzz Tests							   :optional:
+**** Integration Tests						   :optional:
+*** Inheritance
+**** Prototypes							       :core:
+***** Modifying the constructor vs. modifying the prototype
+**** Object Oriented Programming				   :advanced:
+**** Object Oriented Patterns in JavaScript			   :optional:
+**** Ad-hoc Polymorphism					   :optional:
+*** Reading code						       :core:
+**** Best case scenario: it's well documented
+**** More likely scenario: there's very little explanation for how it works
+**** Execute confusing pieces by hand
+** Programming the Browser
+*** The DOM
+**** Abstract Interface to Web Page
+**** Tree Structure
+**** Browser Dependent
+*** Manipulating the DOM
+**** Events
+***** Javascript Event Loop
+***** Using Events for User Interfaces
+*** Manipulating the DOM with jQuery
+**** jQuery selectors
+***** Selection and Collection
+      + $("") is the basic selection operator
+      + whenever you make a selection you actually get a *collection* of items
+***** ID selection
+***** Element type selection
+***** Class selection
+***** Child and parent selection
+**** jQuery Event Handlers
+***** jQuery event types
+****** Lots of events, but will cover the common cases
+****** ready
+****** keydown
+****** keypress
+****** keyup
+****** mouseenter
+****** mouseleave
+****** mouseover
+****** click
+****** change
+****** blur
+****** focus
+***** on
+      We can turn on event handlers with the ~.on~ method. 
+      ~.on~ in its most basic form takes an event name and a callback that will be the event handler
+      http://api.jquery.com/on/ 
+***** off
+***** one
+      ~one~ is semantically equivalent to an ~on~ with a handler that turns the event handler ~off~ after it fires
+***** trigger
+      ~trigger~ allows you to manually invoke an event
+**** jQuery UI
+***** slideToggle
+***** hide
+***** show
+**** AJAX
+***** HTTP Requests
+****** Stateless requests and REST philosophy
+****** GET
+****** PUT
+****** POST
+****** DELETE
+****** Interacting with simple servers
+**** Cross Domain Requests
+***** Why cross domain requests are hard
+      https://en.wikipedia.org/wiki/Cross-site_scripting
+      https://en.wikipedia.org/wiki/Same-origin_policy
+***** JSONP and cross domain requests
+      https://en.wikipedia.org/wiki/JSONP
+      http://stackoverflow.com/questions/2067472/what-is-jsonp-all-about
+      The basic idea is that we can violate the same-origin policy by using the script tag.
+
+      The problem with the script tag is that it can /run/ the javascript code but there's no way for that code to intersect your program: basically,
+      it has no way to name anything in your environment and you can't name anything in it's environment. What jsonp does is give you a way to name a function
+      that should take the resultant data as an argument. This is a function in *your* code. A jsonp call takes, as a parameter, the name of your function. The called server
+      will then calculate the response to your API call and then return, as a string, a call to your function with the calculated response fed to it as arguments.
+
+      If you're not used to thinking of your code, before it's executed, as just literal strings then this might feel weird.
+***** JSONP in jQuery
+      http://api.jquery.com/jQuery.getJSON/ 
+      In jQuery making jsonp calls is just a simple matter including the "?callback=function-name" query parameter in the URL
+** Programming Servers
+*** Node
+**** Node as JavaScript environment
+***** Node runtime
+      The Node runtime is based on the same engine that runs JavaScript in the Chrome browser, i.e. the [[https://en.wikipedia.org/wiki/V8_(JavaScript_engine)][V8 engine]]
+      Since JavaScript always has a notion of "events", Node uses these events to handle all interactions with the outside world.
+**** Synchronous vs. Asynchronous
+***** Multi-processing
+****** Processes
+       + a process is an instance of a program
+       + every computer can run multiple processes at once
+	 + a process 
+****** Threads
+**** Node as Server Building Platform
+**** Node modules
+*** Express
+    + Client Server redux
+      + What is a server
+      + What is a client
+    + Servers and HTTP Requests
+      + GET
+      + PUT
+      + POST
+      + DELETE
+    + Servers and State
+      + Examples of how state is needed by the servers
+      + Persistency across refresh
+    + Node
+      + Node is for convenient server writing
+    + Express
+      + First Express Example
+       	+ Show "hello world" server
+       	+ app.get
+	  + requests
+	    + what they are
+	    + what data they have
+	      + not much to start
+	  + responses
+	    + res.send
+	    + res.end
+       	+ app.listen
+	  + explain ports
+      + Second Express Example
+       	+ "echo" server
+       	+ body-parser
+	  + installing and "use"ing
+       	+ app.post
+	  + ~req.body.FIELD~
+      + Middleware
+       	+ app.use
+       	+ app.get
+	  + app.METHOD
+       	+ almost everything in express is technically middleware
+      + Bigger example
+       	+ this could be an exercise or it could just be something you show them
+       	+ Simple site with login
+	  + Have a login page
+	  + If you're already logged in you should be redirected to the index
+	  + If you're not logged in you should be redirected to the login page
+	  + Your username should be stored in a cookie
+	  + The index page should display something simple like "Hello, NAME you've logged in {{num}} times since the server started"
+	  + Have a logout button that clears the cookie and sends you to the login page
+	  + use app.locals to store how many times the user has logged in
+	    + object indexed by usernames would be simplest
+       	+ app.locals
+	  + req.app
+       	+ cookie-parser
+       	+ res.redirect
+       	+ res.render
+       	+ templates
+	  + handlebars templates
+	  + use ~{{...}}~ to access javascript data
+	    + can access fields of objects just like one normally would
+	  + res.render
+	  + ~{{#each }}~ helper
+      + Express Generator
+       	+ layout of applications from express generator
+	  + ~/app.js~ is the main framework of the application
+	    + sets up the "middleware"
+	    + includes body-parser and cookie-parser by default
+	  + ~/public/*~
+	    + directories that are, by default, set up to statically serve files
+	      + ~app.use(express.static(path.join(__dirname, 'public')));~
+	    + ~images~
+	    + ~javascripts~
+	    + ~stylesheets~
+	  + ~/routes~
+	    + files that control the routing
+	    + by default set up with
+	      + ~var routes = require('./routes/index');~
+	      + ~app.use('/', routes)~
+	    + all the routing files set up HTTP routes and expose the interface as a module
+	  + ~/views~
+	    + for *templates*
+       	
+*** Building Applications
+*** Defining an API						       :core:
+**** What data do you want to expose?
+**** Choosing your URLs
+*** Authentication
+** Full Applications
+*** Backbone
+**** MV(C) as Organization Tool
+**** Models
+**** Views
+**** Events
+**** Collections of Models
+**** Collections of Views
+**** Many to One Relationships
+**** Many to Many Relationships
+*** Databases
+**** Persistence of Data
+***** Persistening data allows us to keep our applications after the server is restarted
+***** The storage of data involves tradeoffs
+****** Data sets can be massive
+******* Twitter has 500 million tweets per day
+******* Tumblr has 80 million posts per day
+****** Need compact storage and fast lookup
+******* Writing it all to a single file and compressing it is small but very slow
+******* Naive search tree implementations are fast (for simple data) but can be very large
+**** Relational Databases
+***** Relational databases are the most common persistency solution
+***** Relational databases store everything as tables
+****** tables have rows and columns
+****** the columns are the types of data
+****** the rows are "related" data
+******* e.g. a user has an ID and a name
+***** SQL is the interface to relational databases
+****** SQL is a standard with a variety of operations
+****** Individual relational databases provide subsets of the SQL standard
+****** Commands that work in one database may not work in another
+******* The common case is compatibility though
+***** Vaguely based in relational algebra
+****** Relational algebra is the idea that data can be described by how sets of connected things
+****** Relational algebra was meant to provide an abstract interface to data separate from how its stored
+****** Familiar mathematical operators can be used to manipulate the data
+****** SQL is a compromise between relational algebra's abstraction and simplicity of implementation
+***** Advantages of relational databases
+***** Disadvantages of relational databases
+**** NoSQL Databases
+***** General name for everything that rejects relational database models
+***** Several different common models of data
+****** Key-value pairs
+****** Documents
+***** Orchestrate
+***** MongoDB
+*** Web sockets							   :optional:
